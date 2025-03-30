@@ -1,7 +1,12 @@
 //import { createConnection } from "typeorm";
 
 import { DataSource } from "typeorm"
-import User_2029 from "../entities/user"
+
+import User_1990 from "../entities/user"
+import Comment_1990 from "../entities/comments"
+import Like_1990 from "../entities/likes"
+
+import News_Jibe from "../entities/news"
 
 
 
@@ -20,7 +25,7 @@ const datasource = new DataSource({
         trustServerCertificate:true,
         enableArithAbort:true
     },
-    entities:[User_2029],
+    entities:[User_1990,News_Jibe,Comment_1990,Like_1990],
     logging:false
 })
 

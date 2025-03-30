@@ -13,46 +13,47 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
-const news_1 = __importDefault(require("./news"));
+const user_1 = __importDefault(require("./user"));
 const comments_1 = __importDefault(require("./comments"));
-const likes_1 = __importDefault(require("./likes"));
-let User_3000 = class User_3000 extends typeorm_1.BaseEntity {
+let News_3000 = class News_3000 extends typeorm_1.BaseEntity {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], User_3000.prototype, "id", void 0);
+], News_3000.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], User_3000.prototype, "userName", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ unique: true }),
-    __metadata("design:type", String)
-], User_3000.prototype, "email", void 0);
+], News_3000.prototype, "title", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], User_3000.prototype, "password", void 0);
+], News_3000.prototype, "category", void 0);
 __decorate([
-    (0, typeorm_1.Column)({
-        enum: ["admin", "user"]
-    }),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], User_3000.prototype, "role", void 0);
+], News_3000.prototype, "language", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => news_1.default, (news) => news.user),
-    __metadata("design:type", Array)
-], User_3000.prototype, "news", void 0);
+    (0, typeorm_1.Column)({ type: "text" }),
+    __metadata("design:type", String)
+], News_3000.prototype, "description", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => comments_1.default, (comment) => comment.user),
-    __metadata("design:type", Array)
-], User_3000.prototype, "comments", void 0);
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], News_3000.prototype, "fileName", void 0);
 __decorate([
-    (0, typeorm_1.OneToMany)(() => likes_1.default, (like) => like.user),
-    __metadata("design:type", Array)
-], User_3000.prototype, "likes", void 0);
-User_3000 = __decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], News_3000.prototype, "fileUrl", void 0);
+__decorate([
+    (0, typeorm_1.ManyToOne)(() => user_1.default, (user) => user.news, { onDelete: "CASCADE" }),
+    __metadata("design:type", user_1.default)
+], News_3000.prototype, "user", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => comments_1.default, (comments) => comments.news),
+    __metadata("design:type", comments_1.default)
+], News_3000.prototype, "comments", void 0);
+News_3000 = __decorate([
     (0, typeorm_1.Entity)()
-], User_3000);
-exports.default = User_3000;
+], News_3000);
+exports.default = News_3000;

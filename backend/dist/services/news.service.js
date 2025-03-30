@@ -12,49 +12,43 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const user_repository_1 = __importDefault(require("../repository/user.repository"));
-class userService {
-    signUp(user) {
+const news_repository_1 = __importDefault(require("../repository/news.repository"));
+class newsService {
+    createPost(news, user) {
         return __awaiter(this, void 0, void 0, function* () {
-            const data = user_repository_1.default.signUp(user);
+            const data = yield news_repository_1.default.createPost(news, user);
             return data;
         });
     }
-    login(user) {
+    getPosts(userId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const data = user_repository_1.default.login(user);
+            const data = yield news_repository_1.default.getPosts(userId);
             return data;
         });
     }
-    creatComment(comment, postId, userId) {
+    deletePost(postId, user) {
         return __awaiter(this, void 0, void 0, function* () {
-            const data = user_repository_1.default.createComment(comment, postId, userId);
-            return data;
+            const result = yield news_repository_1.default.deletePost(postId, user);
+            return result;
         });
     }
-    getMyComments(userId) {
+    getPost(postId, user) {
         return __awaiter(this, void 0, void 0, function* () {
-            const data = user_repository_1.default.getMyComments(userId);
-            return data;
+            const result = yield news_repository_1.default.getPost(postId);
+            return result;
         });
     }
-    deleteComment(commentId) {
+    newsArticles() {
         return __awaiter(this, void 0, void 0, function* () {
-            const data = user_repository_1.default.deleteComment(commentId);
-            return data;
+            const result = yield news_repository_1.default.getNewsArticles();
+            return result;
         });
     }
-    likeComment(commentId, userId) {
+    getCommentsNewsId(newsId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const data = user_repository_1.default.likeComment(commentId, userId);
-            return data;
-        });
-    }
-    dislikeComment(likeId) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const data = user_repository_1.default.dislikeComment(likeId);
-            return data;
+            const result = news_repository_1.default.getCommentsByNewsId(newsId);
+            return result;
         });
     }
 }
-exports.default = new userService();
+exports.default = new newsService;

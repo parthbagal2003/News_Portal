@@ -6,6 +6,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
 const user_1 = __importDefault(require("../entities/user"));
+const comments_1 = __importDefault(require("../entities/comments"));
+const likes_1 = __importDefault(require("../entities/likes"));
+const news_1 = __importDefault(require("../entities/news"));
 const datasource = new typeorm_1.DataSource({
     type: "mssql",
     database: "JIBE_Main_Training",
@@ -19,7 +22,7 @@ const datasource = new typeorm_1.DataSource({
         trustServerCertificate: true,
         enableArithAbort: true
     },
-    entities: [user_1.default],
+    entities: [user_1.default, news_1.default, comments_1.default, likes_1.default],
     logging: false
 });
 exports.default = datasource;

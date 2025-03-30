@@ -16,6 +16,35 @@ class userService{
         return data
     }
 
+    async creatComment(comment:string,postId:number,userId:number){
+        const data = userRepository.createComment(comment,postId,userId)
+
+        return data
+    }
+
+    async getMyComments(userId:number){
+        const data = userRepository.getMyComments(userId)
+
+        return data
+    }
+
+    async deleteComment(commentId:number){
+        const data = userRepository.deleteComment(commentId)
+
+        return data
+    }
+
+    async likeComment(commentId:number,userId:number){
+        const data = userRepository.likeComment(commentId,userId)
+        return data
+    }
+
+    async dislikeComment(likeId:number){
+        const data = userRepository.dislikeComment(likeId)
+
+        return data
+    }
+    
 }
 
 

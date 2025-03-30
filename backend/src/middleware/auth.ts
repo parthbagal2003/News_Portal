@@ -11,7 +11,7 @@ dotenv.config()
 export const authHandler:RequestHandler = async(req,res,next:NextFunction)=>{
     const token = req.cookies.authCookie
 
-    console.log(req.cookies.authCookie);
+    
     
     
 
